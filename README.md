@@ -1,84 +1,59 @@
-<div align="center">
+# 📈 E-Commerce Retail Sales & Customer Retention Analysis
 
-# 📊 E-Commerce & Retail Customer Analytics Platform
+[![SQL](https://img.shields.io/badge/SQL-Window_Functions-CC292B?style=flat-square)](#)
+[![Python](https://img.shields.io/badge/Python-Cohort_Analysis-blue?style=flat-square)](#)
+[![Excel](https://img.shields.io/badge/Excel-Reporting-217346?style=flat-square)](#)
+[![Status](https://img.shields.io/badge/Status-Completed-success?style=flat-square)](#)
 
-**End-to-end data analytics pipeline transforming raw transactional records into actionable customer cohorts, RFM segmentations, and revenue growth strategies.**
+## 📌 Executive Summary & Business Problem
 
-[![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
-[![Interactive Dashboard](https://img.shields.io/badge/Live_Dashboard-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://your-dashboard-link.streamlit.app)
-[![Jupyter Notebook](https://img.shields.io/badge/Notebook-View_Analysis-F37626?style=for-the-badge&logo=jupyter&logoColor=white)](https://github.com/yourusername/retail-analytics/blob/main/notebooks/customer_segmentation.ipynb)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+E-commerce businesses need to understand customer purchasing patterns, retention behavior, revenue concentration, and regional performance to improve customer lifetime value and sustainable growth.
 
-</div>
+This project analyzes multi-region online retail transactions to evaluate sales performance, customer purchasing behavior, monthly retention patterns, and product-level revenue concentration using SQL, Python, and Excel.
 
----
+## 🛠️ Data Pipeline & Technical Approach
 
-## 🎯 Executive Summary & Business Impact
+* **Data Cleaning & Preparation:** Removed cancelled transactions, filtered invalid quantities and prices, handled missing customer identifiers, and prepared the dataset for downstream analysis.
+* **Advanced SQL Analysis:** Used CTEs, `DENSE_RANK()`, window functions, aggregations, and date-based calculations to analyze customer order frequency, lifecycle metrics, and revenue trends.
+* **Customer Cohort Analysis:** Grouped customers by acquisition month and tracked their purchasing activity across subsequent months to evaluate retention behavior.
+* **Pareto Analysis:** Evaluated SKU-level revenue contribution to identify the products responsible for the largest share of overall revenue.
+* **Reporting & Visualization:** Used Python and Excel to present sales trends, customer retention patterns, cohort analysis, and product concentration insights.
 
-Online retailers lose significant revenue through broad, non-targeted marketing and unmonitored customer churn. This project analyzes **500,000+ transactional records** to extract behavioral patterns, evaluate retention lifecycles, and build programmatic customer segmentation.
+## 📂 Project Structure
 
-* **Revenue Concentration:** Discovered that the top **15% of customers drive 68% of total revenue**, enabling high-ROI VIP retention programs.
-* **Retention Drop-off:** Identified a critical drop-off point at **Month 3** across new customer cohorts, directly informing targeted re-engagement campaigns.
-* **Marketing Efficiency:** Built dynamic **RFM (Recency, Frequency, Monetary)** clusters to replace uniform email blasts with tiered, persona-driven lifecycle messaging.
+```text id="w8n1cz"
+├── data/               # Raw and processed online retail transaction data
+├── notebooks/          # Python notebooks for data analysis and cohort visualization
+├── sql/                # SQL queries for customer and sales analysis
+└── README.md           # Business case study, methodology, and insights
+```
 
----
+## 📊 Key Business Insights
 
-## 📸 Interactive Dashboard Preview
+* **Customer Retention:** The analysis identified a significant decline in customer activity after the initial purchase period, highlighting the importance of early-stage customer engagement.
+* **Regional AOV Differences:** While the domestic market contributed the majority of order volume, selected international markets demonstrated higher Average Order Value (AOV), indicating potential opportunities for targeted market expansion.
+* **Revenue Concentration:** A relatively small group of high-performing SKUs contributed a substantial share of overall revenue, demonstrating the importance of effective inventory planning for core products.
+* **Customer Purchasing Patterns:** Order frequency and customer lifecycle analysis revealed distinct purchasing behaviors that can be used to design more targeted retention strategies.
 
-<!-- Replace with an actual screenshot or GIF of your Streamlit / Tableau / PowerBI dashboard -->
-![Retail Analytics Dashboard](https://raw.githubusercontent.com/yourusername/retail-analytics/main/assets/dashboard_preview.png)
+## 💡 Strategic Business Recommendations
 
-> **Live Demo:** Explore the interactive dashboard at **[retail-analytics.streamlit.app](https://your-dashboard-link.streamlit.app)** (Filter by cohort, drill into RFM segments, and inspect customer lifetime value).
+* **Post-Purchase Engagement:** Introduce automated re-order reminders and personalized product recommendations based on previous purchases and expected replenishment cycles.
+* **International Market Expansion:** Prioritize high-AOV international markets for targeted campaigns after evaluating demand, margins, and customer acquisition economics.
+* **Core SKU Inventory Protection:** Maintain appropriate safety-stock levels for high-revenue SKUs to reduce potential revenue loss caused by stockouts.
+* **Customer Retention Programs:** Develop early-stage engagement campaigns to encourage customers to make a second purchase and improve long-term retention.
+* **Customer Segmentation:** Combine purchase frequency, order value, geography, and lifecycle stage to create more targeted customer segments.
 
----
+## 🚀 How to Explore This Project
 
-## 🔬 Key Analytical Findings
+1. **Review the SQL Scripts:** Open `/sql` to explore CTEs, window functions, customer lifecycle calculations, cohort grouping, and sales KPIs.
+2. **Review the Python Notebook:** Open `/notebooks` to examine data preparation, cohort analysis, retention calculations, and visualization workflows.
+3. **Review the Data:** Explore `/data` to understand the transaction-level attributes used for the analysis.
 
-### 1. Customer Retention (Cohort Analysis)
-Tracking monthly acquisition cohorts revealed:
-- Average Month-1 retention sits at **~24%**, stabilizing around **14%** by Month 6.
-- Holiday-season cohorts (Q4) demonstrate higher initial baskets but churn **18% faster** than organic spring cohorts.
+## 👤 Author
 
-### 2. Behavioral Segmentation (RFM Scoring & K-Means)
-Customers were evaluated across three normalized vectors:
-- **Recency ($R$):** Days since last order.
-- **Frequency ($F$):** Total lifetime transactions.
-- **Monetary ($M$):** Cumulative net spend.
+**Prashant Marathe**
 
-| Customer Tier | Population (%) | Revenue Share (%) | Actionable Strategy |
-| :--- | :---: | :---: | :--- |
-| **Champions / VIPs** | 8.2% | 46.1% | Early product access, loyalty rewards, direct outreach. |
-| **Loyal Customers** | 18.5% | 27.3% | Up-sell premium lines, referral incentives. |
-| **At Risk / Churning** | 14.1% | 12.8% | Automated win-back discounts before Day 90 threshold. |
-| **Hibernating / Lost** | 59.2% | 13.8% | Low-cost retargeting via paid socials; suppress active email lists. |
-
----
-
-## 🛠 Tech Stack & Methodology
-
-| Component | Tool / Library | Purpose |
-| :--- | :--- | :--- |
-| **Data Processing** | Python, `pandas`, `NumPy` | Cleaning, missing-value imputation, outlier removal |
-| **Data Storage / Querying** | PostgreSQL / SQLite | Relational schema modeling and aggregations |
-| **Statistical Analysis** | `scipy.stats`, `scikit-learn` | Feature scaling, Log-transforms, K-Means clustering |
-| **Visualization** | `matplotlib`, `seaborn`, `Plotly` | Heatmaps, cohort retention grids, distribution curves |
-| **Delivery / UI** | Streamlit (or PowerBI / Tableau) | Interactive business intelligence dashboard |
-
----
-
-## 📂 Repository Structure
-
-```text
-├── data/
-│   ├── raw/                 # Original, immutable transactional dataset
-│   └── processed/           # Cleaned, RFM-scored data files
-├── notebooks/
-│   ├── 01_data_cleaning.ipynb       # Anomaly detection & cancellation handling
-│   ├── 02_cohort_analysis.ipynb     # Retention matrix calculation
-│   └── 03_rfm_segmentation.ipynb    # K-Means clustering & segment profiling
-├── src/
-│   ├── pipeline.py          # Automated ETL script
-│   └── utils.py             # Reusable calculation & plotting helpers
-├── app.py                   # Streamlit dashboard application
-├── requirements.txt         # Pinned project dependencies
-└── README.md
+* **LinkedIn:** https://www.linkedin.com/in/prashantmarathe17
+* **Portfolio:** https://prashant-marathe.framer.website/
+* **Email:** [p04747391@gmail.com](mailto:p04747391@gmail.com)
+* **Location:** Pune, Maharashtra, India
